@@ -40,9 +40,10 @@ const createTool = asyncHandler(async (req, res) => {
   const tool = await Tool.create({
     user: req.user.id,
     name,
+    category,
     quantity,
     description,
-    // image: fileData,
+    image: fileData,
   });
 
   res.status(201).json(tool);
@@ -89,7 +90,7 @@ const deleteTool = asyncHandler(async (req, res) => {
 
 // Update Tool
 const updateTool = asyncHandler(async (req, res) => {
-  const { name, quantity, description } = req.body;
+  const { name, category, quantity, description } = req.body;
   const { id } = req.params;
 
   const tool= await Tool.findById(id);
@@ -106,27 +107,27 @@ const updateTool = asyncHandler(async (req, res) => {
   }
 
   // Handle Image upload
-//   let fileData = {};
-//   if (req.file) {
-    // Save image to cloudinary
-    // let uploadedFile;
-    // try {
-    //   uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-    //     folder: "Tool App",
-    //     resource_type: "image",
-    //   });
-    // } catch (error) {
-    //   res.status(500);
-    //   throw new Error("Image could not be uploaded");
-    // }
+  let fileData = {};
+  if (req.file) {
+    //Save image to cloudinary
+    let uploadedFile;
+    try {
+      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+        folder: "Tool App",
+        resource_type: "image",
+      });
+    } catch (error) {
+      res.status(500);
+      throw new Error("Image could not be uploaded");
+    }
 
-//     fileData = {
-//       fileName: req.file.originalname,
-//       filePath: uploadedFile.secure_url,
-//       fileType: req.file.mimetype,
-//       fileSize: fileSizeFormatter(req.file.size, 2),
-//     };
-//   }
+    fileData = {
+      fileName: req.file.originalname,
+      filePath: uploadedFile.secure_url,
+      fileType: req.file.mimetype,
+      fileSize: fileSizeFormatter(req.file.size, 2),
+    };
+  }
 
   // Update Tool
   const updatedTool = await Tool.findByIdAndUpdate(
