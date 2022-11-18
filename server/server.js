@@ -1,10 +1,10 @@
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config({ path: '.env'});
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const userRoute = require("./routes/userRoute");
-const productRoute = require("./routes/productRoute");
+const toolRoute = require("./routes/toolRoute");
 const errorHandler = require("./middleWare/errorMiddleware");
 const cookieParser = require("cookie-parser");
 
@@ -28,7 +28,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes Middleware
 app.use("/api/users", userRoute);
-app.use("/api/products", productRoute);
+app.use("/api/tools", toolRoute);
 
 
 // Routes
@@ -38,13 +38,25 @@ app.get("/", (req, res) => {
 
 // Error Middleware
 app.use(errorHandler);
+
+
 // Connect to DB and start server
 const PORT = process.env.PORT || 5000;
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/catoologue', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server Running on port ${PORT}`);
+      
     });
   })
   .catch((err) => console.log(err));
+  
+
+
+  

@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const Token = require("../models/tokenModel");
+const Token = require("../models/Token");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 
@@ -260,11 +260,11 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const message = `
       <h2>Hello ${user.name}</h2>
       <p>Please use the url below to reset your password</p>  
-      <p>This reset link is valid for only 30minutes.</p>
+      <p>This reset link is valid for only 30 minutes.</p>
 
       <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
 
-      <p>Regards...</p>
+      <p>ca-TOOL-ogue.</p>
       
     `;
   const subject = "Password Reset Request";
