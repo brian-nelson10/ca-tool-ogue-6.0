@@ -5,10 +5,11 @@ const cloudinary = require("cloudinary").v2;
 
 // Create Tool
 const createTool = asyncHandler(async (req, res) => {
-  const { name, quantity, description } = req.body;
+
+  const { name, category, quantity, description } = req.body;
 
   //   Validation
-  if (!name || !quantity || !description) {
+  if (!name || !category || !quantity || !description) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
@@ -20,7 +21,7 @@ const createTool = asyncHandler(async (req, res) => {
     let uploadedFile;
     try {
       uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Pinvent App",
+        folder: "Tool App",
         resource_type: "image",
       });
     } catch (error) {
@@ -134,9 +135,10 @@ const updateTool = asyncHandler(async (req, res) => {
     { _id: id },
     {
       name,
+      category,
       quantity,
       description,
-    //   image: Object.keys(fileData).length === 0 ? tool?.image : fileData,
+      image: Object.keys(fileData).length === 0 ? tool?.image : fileData,
     },
     {
       new: true,
@@ -150,7 +152,7 @@ const updateTool = asyncHandler(async (req, res) => {
 module.exports = {
   createTool,
   getTools,
-  getToolt,
+  getTool,
   deleteTool,
   updateTool,
 };
