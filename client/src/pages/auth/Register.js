@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import Copyright from "./Copyright";
 // import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -28,7 +29,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setformData] = useState(initialState);
-    const { name, email, password, password2 } = formData;
+    const { name, email, password } = formData;
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -70,6 +71,7 @@ const Register = () => {
     return (
         <ThemeProvider theme={theme}>
             <Container comonent="main" maxWidth="xs">
+            {isLoading }
                 <CssBaseline/>
                 <Box 
                     sx={{
