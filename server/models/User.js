@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 const bcrypt = require("bcryptjs");
 
-const userSchema = mongoose.Schema(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -27,15 +28,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a photo"],
       default: "",
-    },
-    phone: {
-      type: String,
-      default: "+234",
-    },
-    bio: {
-      type: String,
-      maxLength: [250, "Bio must not be more than 250 characters"],
-      default: "bio",
     },
   },
   {

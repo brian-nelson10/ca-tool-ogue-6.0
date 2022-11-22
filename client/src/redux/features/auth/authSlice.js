@@ -28,7 +28,6 @@ const authSlice = createSlice({
             const profile = action.payload;
             state.user.name = profile.name;
             state.user.email = profile.email;
-            state.user.phone = profile.phone;
             state.user.photo = profile.photo;
         },
     },

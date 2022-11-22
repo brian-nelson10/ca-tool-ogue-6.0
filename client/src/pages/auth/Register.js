@@ -21,7 +21,6 @@ const initialState = {
     name: "",
     email: "", 
     password: "", 
-    password2: "", 
 };
 
 const Register = () => {
@@ -70,7 +69,7 @@ const Register = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container comonent="main" maxWidth="xs">
+            <Container component="main" maxWidth="xs">
             {isLoading }
                 <CssBaseline/>
                 <Box 
@@ -91,7 +90,7 @@ const Register = () => {
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <TextField
-                                        autoComplete="given-name"
+                                       
                                         name="name"
                                         required
                                         fullWidth
@@ -121,7 +120,7 @@ const Register = () => {
                                         id="password"
                                         label="Password"
                                         type="password"
-                                        autoComplete="new-password"
+                                       
                                         value={password}
                                         onChange={handleInputChange}
                                         />
