@@ -1,12 +1,13 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-// import {  ShowOnLogout } from "../../components/Login/Link";
-// import { ShowOnLogin } from "../../components/Login/Link";
+import {  ShowOnLogout } from "../../components/Login/Link";
+import { ShowOnLogin } from "../../components/Login/Link";
 import HandyMan from "@mui/icons-material/Handyman";
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { 
     Container,
+    Link,
     AppBar,
     Box,
     Toolbar,
@@ -112,38 +113,56 @@ const Header = () => {
           >
             ca-TOOL-ogue
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ 
+            flexGrow: 0, 
+            display: { xs: 'none', md: 'flex' } }}>
             
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ 
+                    my: 2, 
+                    color: 'white',
+                    display: 'block',
+                    textDecoration: 'none' }}
               >
                 Add Tool
               </Button>
 
-              {/* <Box sx={{ flexGrow: 0 }}>
-              <ul className="home-links">
+              <Box sx={{ 
+                flexGrow: 0,
+                textDecoration: 'none',
+                display: { xs: "none", md: "flex" }
+               }}>
+             
           <ShowOnLogout>
-            <li>
+           
               <Link to="/register">Register</Link>
-            </li>
+            
           </ShowOnLogout>
           <ShowOnLogout>
-            <li>
-              <button className="--btn --btn-primary">
+              <Button
+              sx={{ 
+                my: 2, 
+                color: 'white', 
+                display: 'block',
+                textDecoration: 'none' }}>
                 <Link to="/login">Login</Link>
-              </button>
-            </li>
+              </Button>
           </ShowOnLogout>
+
           <ShowOnLogin>
-            <li>
-              <button className="--btn --btn-primary">
-                <Link to="/dashboard">Logout</Link>
-              </button>
-            </li>
+              <Button 
+              sx={{ 
+                my: 2, 
+                display: 'block',
+                 }}>
+                <Link 
+                    color="white" underline="none"
+                    to="/dashboard">Logout</Link>
+              </Button>
           </ShowOnLogin>
-        </ul>
-              </Box> */}
+        
+              </Box>
           </Box>
         </Toolbar>
       </Container>
