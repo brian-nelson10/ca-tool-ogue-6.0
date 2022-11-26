@@ -125,7 +125,9 @@ const Header = () => {
                     display: 'block',
                     textDecoration: 'none' }}
               >
+                <Link to="/add-tool">
                 Add Tool
+                </Link>
               </Button>
 
               <Box sx={{ 

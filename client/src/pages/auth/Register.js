@@ -12,7 +12,7 @@ import Copyright from "./Copyright";
 // import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import HandyMan from '@mui/icons-material/Handyman';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -65,7 +65,16 @@ const Register = () => {
             setIsLoading(false);
         }
     };
-    const theme = createTheme();
+    
+    const theme = createTheme({
+        palette: {
+          secondary: {
+            light: '#ff7961',
+            main: '#f44336',
+            dark: '#ba000d',
+          },
+        },
+      });
 
     return (
         <ThemeProvider theme={theme}>
@@ -80,8 +89,8 @@ const Register = () => {
                         alignItems: 'center',
                     }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon/>
+                        <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
+                            <HandyMan/>
                         </Avatar>
                         <Typography component="h1"variant="h5">
                             Sign Up
@@ -130,15 +139,15 @@ const Register = () => {
                                         type="submit"
                                         fullWidth
                                         variant="contained"
-                                        sx={{ mt: 3, mb: 2 }}
+                                        sx={{ mt: 3, mb: 2, bgcolor: 'secondary.dark' }}
                                         >
                                             Sign Up
                                         </Button>
                                         <Grid container justifyContent="flex-end">
                                             <Grid item>
-                                                <Link to="/" variant="body2">Home</Link>
+                                                {/* <Link to="/" variant="body2">Home</Link> */}
                                                 <Link to="/login" variant="body2">
-                                                    Already have an account? Sign in
+                                                    Already have an account?
                                                 </Link>
                                             </Grid>
                                         </Grid>
