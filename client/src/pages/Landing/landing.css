@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap');
+
+
+.heroImg {
+    padding-top: 5px;
+    height: 500px;
+}
+
+.heroH1 {
+    font-family: 'Antonio', sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 5px 4px 7px gray;
+    padding-bottom: 10px;
+}
+
+.heroText {
+    padding-bottom: 10px;
+}
+
+.Button {
+    border-radius: 15px;
+}
+
+.Button:hover {
+    background-color: red;
+}
