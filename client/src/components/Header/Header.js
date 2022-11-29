@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {  ShowOnLogout } from "../../components/Login/Link";
 import { ShowOnLogin } from "../../components/Login/Link";
 import HandyMan from "@mui/icons-material/Handyman";
@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { 
     Container,
-    Link,
+    // Link,
     AppBar,
     Box,
     Toolbar,
@@ -22,6 +22,8 @@ import {
 
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -88,7 +90,9 @@ const Header = () => {
               }}
             >
              
-                <MenuItem onClick={handleCloseNavMenu}>
+                <MenuItem onClick={(e) => {
+                                    navigate("/add-tool")
+                   }}   >
                   <Typography textAlign="center">Add Tool</Typography>
                 </MenuItem>
             
@@ -118,16 +122,16 @@ const Header = () => {
             display: { xs: 'none', md: 'flex' } }}>
             
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={(e) => {
+                    navigate("/add-tool")
+   }}
                 sx={{ 
                     my: 2, 
                     color: 'white',
                     display: 'block',
                     textDecoration: 'none' }}
               >
-                <Link to="/add-tool">
                 Add Tool
-                </Link>
               </Button>
 
               <Box sx={{ 
@@ -138,7 +142,9 @@ const Header = () => {
              
           <ShowOnLogout>
            
-              <Link to="/register">Register</Link>
+              <Button onClick={(e) => {
+                                    navigate("/register")
+                   }}>Register</Button>
             
           </ShowOnLogout>
           <ShowOnLogout>
@@ -153,15 +159,18 @@ const Header = () => {
           </ShowOnLogout>
 
           <ShowOnLogin>
-              <Button 
-              sx={{ 
-                my: 2, 
-                display: 'block',
-                 }}>
-                <Link 
-                    color="white" underline="none"
-                    to="/dashboard">Logout</Link>
-              </Button>
+                <Button 
+                sx={{
+                    my: 2,
+                    color: 'white',
+                    dislplay: 'block',
+                    textDecoration: 'none'
+                }} 
+                onClick={(e) => {
+                                    navigate("/")
+                   }}
+                    >Logout</Button>
+             
           </ShowOnLogin>
         
               </Box>

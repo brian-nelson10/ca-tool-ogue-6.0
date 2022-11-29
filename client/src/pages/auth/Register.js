@@ -7,7 +7,6 @@ import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Copyright from "./Copyright";
 // import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -19,8 +18,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const initialState = {
     name: "",
-    email: "", 
-    password: "", 
+    email: "",
+    password: "",
 };
 
 const Register = () => {
@@ -38,7 +37,7 @@ const Register = () => {
     const register = async (e) => {
         e.preventDefault();
 
-        if(!name || !email || !password) {
+        if (!name || !email || !password) {
             return toast.error("All Fields Required!");
         }
         if (password.length < 6) {
@@ -49,7 +48,7 @@ const Register = () => {
         }
 
         const userData = {
-            name, 
+            name,
             email,
             password,
         };
@@ -57,103 +56,100 @@ const Register = () => {
         try {
             const data = await registerUser(userData);
             console.log(data);
+            console.log(userData);
             await dispatch(SET_LOGIN(true));
             await dispatch(SET_NAME(data.name));
-            navigate("/dashboard");
+            navigate("/");
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
         }
     };
-    
+
     const theme = createTheme({
         palette: {
-          secondary: {
-            light: '#ff7961',
-            main: '#f44336',
-            dark: '#ba000d',
-          },
+            secondary: {
+                light: '#ff7961',
+                main: '#f44336',
+                dark: '#ba000d',
+            },
         },
-      });
+    });
 
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
-            {isLoading }
-                <CssBaseline/>
-                <Box 
+                {isLoading}
+                <CssBaseline />
+                <Box
                     sx={{
                         marginTop: 8,
-                        display: 'flex', 
+                        display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
-                    >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
-                            <HandyMan/>
-                        </Avatar>
-                        <Typography component="h1"variant="h5">
-                            Sign Up
-                        </Typography>
-                        <Box comonent="form" onSubmit={register} sx={{ mt:3 }}>
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
+                        <HandyMan />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign Up
+                    </Typography>
+                    <Box sx={{ mt: 3 }}>
+                        <form onSubmit={register}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <TextField
-                                       
-                                        name="name"
+                                    <input
+                                        type="text"
+                                        placeholder="Name"
                                         required
-                                        fullWidth
-                                        id="name"
-                                        label="Name"
-                                        autoFocus
+                                        name="name"
                                         value={name}
                                         onChange={handleInputChange}
-                                        />
+                                    />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField
+                                    <input
+                                        type="email"
+                                        placeholder="Email"
                                         required
-                                        fullWidth
-                                        id="email"
-                                        label="Email Address"
                                         name="email"
                                         value={email}
                                         onChange={handleInputChange}
-                                        />
+                                    />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        name="password"
-                                        id="password"
-                                        label="Password"
+                                    <input
                                         type="password"
-                                       
+                                        placeholder="Password"
+                                        required
+                                        name="password"
                                         value={password}
                                         onChange={handleInputChange}
-                                        />
+                                    />
                                 </Grid>
                             </Grid>
-                            <Button 
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ mt: 3, mb: 2, bgcolor: 'secondary.dark' }}
-                                        >
-                                            Sign Up
-                                        </Button>
-                                        <Grid container justifyContent="flex-end">
-                                            <Grid item>
-                                                {/* <Link to="/" variant="body2">Home</Link> */}
-                                                <Link to="/login" variant="body2">
-                                                    Already have an account?
-                                                </Link>
-                                            </Grid>
-                                        </Grid>
-                        </Box>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2, bgcolor: 'secondary.dark' }}
+                            >
+                                Sign Up
+                            </Button>
+                            </form>
+                            <Grid container justifyContent="flex-end">
+                                <Grid item>
+                                    {/* <Link to="/" variant="body2">Home</Link> */}
+                                    <Link to="/login" variant="body2">
+                                        Already have an account?
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        
                     </Box>
-                    <Copyright sx={{ mt: 5 }} />
+                </Box>
+                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider>
     );

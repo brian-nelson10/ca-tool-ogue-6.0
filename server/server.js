@@ -1,7 +1,7 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const userRoute = require("./routes/userRoute");
 const toolRoute = require("./routes/toolRoute");
@@ -22,10 +22,10 @@ app.use(express.urlencoded({
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(
   cors({
     origin: ["http://localhost:3000"],

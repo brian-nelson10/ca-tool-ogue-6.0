@@ -8,6 +8,7 @@ import Register from "./pages/auth/Register";
 import AddTool from "./pages/AddTool/AddTool";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
 import { SET_LOGIN } from './redux/features/auth/authSlice';
 import { getLoginStatus } from './services/authService';

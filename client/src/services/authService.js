@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const validateEmail = (email) => {
     return email.match(
@@ -13,7 +13,7 @@ export const validateEmail = (email) => {
   export const registerUser = async (userData) => {
     try {
       const response = await axios.post(
-        `${BACKEND_URL}/api/users/register`,
+        `/api/users/register`,
         userData,
         { withCredentials: true }
       );
@@ -34,7 +34,7 @@ export const validateEmail = (email) => {
   export const loginUser = async (userData) => {
     try {
       const response = await axios.post(
-        `${BACKEND_URL}/api/users/login`,
+        `/api/users/login`,
         userData
       );
       if (response.statusText === "OK") {
@@ -53,7 +53,7 @@ export const validateEmail = (email) => {
   // Logout User
   export const logoutUser = async () => {
     try {
-      await axios.get(`${BACKEND_URL}/api/users/logout`);
+      await axios.get(`/api/users/logout`);
     } catch (error) {
       const message =
         (error.response && error.response.data && error.response.data.message) ||
@@ -67,7 +67,7 @@ export const validateEmail = (email) => {
   export const forgotPassword = async (userData) => {
     try {
       const response = await axios.post(
-        `${BACKEND_URL}/api/users/forgotpassword`,
+        `/api/users/forgotpassword`,
         userData
       );
       toast.success(response.data.message);
@@ -84,7 +84,7 @@ export const validateEmail = (email) => {
   export const resetPassword = async (userData, resetToken) => {
     try {
       const response = await axios.put(
-        `${BACKEND_URL}/api/users/resetpassword/${resetToken}`,
+        `/api/users/resetpassword/${resetToken}`,
         userData
       );
       return response.data;
@@ -100,7 +100,7 @@ export const validateEmail = (email) => {
   // Get Login Status
   export const getLoginStatus = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/users/loggedin`);
+      const response = await axios.get(`/api/users/loggedin`);
       return response.data;
     } catch (error) {
       const message =
@@ -113,7 +113,7 @@ export const validateEmail = (email) => {
   // Get User Profile
   export const getUser = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/users/getuser`);
+      const response = await axios.get(`/api/users/getuser`);
       return response.data;
     } catch (error) {
       const message =
@@ -127,7 +127,7 @@ export const validateEmail = (email) => {
   export const updateUser = async (formData) => {
     try {
       const response = await axios.patch(
-        `${BACKEND_URL}/api/users/updateuser`,
+        `/api/users/updateuser`,
         formData
       );
       return response.data;
@@ -143,7 +143,7 @@ export const validateEmail = (email) => {
   export const changePassword = async (formData) => {
     try {
       const response = await axios.patch(
-        `${BACKEND_URL}/api/users/changepassword`,
+        `/api/users/changepassword`,
         formData
       );
       return response.data;

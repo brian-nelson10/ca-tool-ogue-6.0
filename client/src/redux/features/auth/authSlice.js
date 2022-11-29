@@ -8,8 +8,7 @@ const initialState = {
     user: {
         name: "",
         email: "",
-        phone: "",
-        photo: "",
+        
     },
 };
 
@@ -28,7 +27,7 @@ const authSlice = createSlice({
             const profile = action.payload;
             state.user.name = profile.name;
             state.user.email = profile.email;
-            state.user.photo = profile.photo;
+           
         },
     },
 });
