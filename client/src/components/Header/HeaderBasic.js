@@ -2,12 +2,11 @@ import React from "react";
 // import { useNavigate, Link } from "react-router-dom";
 import HandyMan from "@mui/icons-material/Handyman";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useNavigate } from "react-router-dom";
 import { 
-    Container,
-    // Link,
+    Grid,
+    IconButton,
     AppBar,
-    Toolbar,
     Typography }
      from '@mui/material';
 
@@ -24,27 +23,34 @@ import {
 
 const HeaderBasic = () => {
 
-    // const navigate = useNavigate();
+     const navigate = useNavigate();
 
 
     return (
         <ThemeProvider theme={theme}>
          <AppBar position="static" sx={{ bgcolor: "secondary.blue" }} >
-      <Container maxWidth="xl" sx={{ bgcolor: "secondary.blue" }}>
-        <Toolbar 
-            disableGutters
-            sx={{
-                justifyContent: "space-between",
-                bgcolor: "secondary.blue"
-            }}>
-          <HandyMan sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+    
+      <Grid container justifyContent="space-between" alignItems="center">
+        
+                
+          <IconButton 
+          onClick={(e) => {navigate("/home")}}
+          sx={{ color: 'white',
+                bgcolor: 'secondary.blue',
+                 '&:hover': {
+                color: '#f44336',
+                bgcolor: 'secondary.blue'}}}>
+          <HandyMan  sx={{ fontSize: '40px', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          </IconButton>
           <Typography
+          style={{ flex: '1'}}
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              
+              mr: 1,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -55,16 +61,25 @@ const HeaderBasic = () => {
           >
             ca-TOOL-ogue
           </Typography>
-
-          <HandyMan sx={{ display: { xs: 'flex', md: 'none' }, mr: 48, flex: '.2' }} />
+          
+          
+          <IconButton 
+          onClick={(e) => {navigate("/home")}}
+          sx={{ color: 'white',
+                bgcolor: 'secondary.blue',
+                 '&:hover': {
+                color: '#f44336',
+                bgcolor: 'secondary.blue'}}}>
+          <HandyMan sx={{ fontSize: '40px', display: { xs: 'flex', md: 'none' }, mr: 1,  }} />
+          </IconButton>
           <Typography
+            style={{ flex: 1 }}
             variant="h5"
             noWrap
             component="a"
             href=""
             sx={{
-                flex: '1',
-             
+               
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
@@ -77,8 +92,11 @@ const HeaderBasic = () => {
           >
             ca-TOOL-ogue
           </Typography>
-        </Toolbar>
-      </Container>
+          
+          
+       
+        </Grid>
+      
     </AppBar>
     </ThemeProvider>
   );

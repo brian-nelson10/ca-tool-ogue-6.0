@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 const ToolForm = ({
     tool,
@@ -20,7 +21,7 @@ const ToolForm = ({
 }) => {
     return (
         <div className="addTool">
-            <Card sx={{ maxWidth: 350 }}>
+            <Card sx={{ maxWidth: 450 }} style={{ boxShadow: '1px 1px 1px 1px' }}>
                 <form onSubmit={saveTool}>
                     {imagePreview != null ? (
                     <CardMedia 
@@ -84,10 +85,26 @@ const ToolForm = ({
                         modules={ToolForm.modules}
                         formats={ToolForm.formats}
                         />
-
+                        <br/>
+                        <Grid container justifyContent="center" alignItems="center">
                     <CardActions>
-                        <Button size="small" type="submit">Save Tool</Button>
+                        {/* <Button size="small" type="submit">Save Tool</Button> */}
+                        <Button
+                                        
+                                        type="submit"
+                                        variant="contained"
+                                        sx={{ 
+                                            bgcolor: 'secondary.blue', 
+                                            width: '300px', 
+                                            fontSize: '16px',
+                                            borderRadius: '15px', 
+                                            '&:hover': {
+                                            backgroundColor: '#f44336'
+                                        }, }}>
+                                        Save Tool
+                                    </Button>
                     </CardActions>
+                    </Grid>
                     
                 </CardContent>
                 </form>

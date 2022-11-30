@@ -1,10 +1,16 @@
+import "./addtool.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ToolForm from "../../components/Tool/ToolForm/ToolForm";
-import {
-    createTool
-} from "../../redux/features/tool/toolSlice";
+import Header from "../../components/Header/Header";
+import { createTool } from "../../redux/features/tool/toolSlice";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { 
+    Container,
+    Grid,
+    Typography }
+     from '@mui/material';
 
 const initialState = {
     name: "",
@@ -12,6 +18,17 @@ const initialState = {
     quantity: "",
     price: "",
 };
+
+const theme = createTheme({
+    palette: {
+        secondary: {
+            light: '#ff7961',
+            main: '#f44336',
+            dark: '#ba000d',
+            blue: '#33bfff'
+        },
+    },
+});
 
 const AddTool = () => {
     const dispatch = useDispatch();
@@ -46,13 +63,21 @@ const AddTool = () => {
     
         await dispatch(createTool(formData));
     
-        navigate("/dashboard");
+        navigate("/home");
       };
 
     return (
         <div>
+        <Header />
+        <ThemeProvider theme={theme}>
+        <Container>
         {/* {isLoading && <Loader />} */}
-        <h3 className="--mt">Add New Tool</h3>
+        
+        <Grid align="center">
+        <br/>
+        <Typography variant='h2' align='center' className="h2"
+            style={{ fontFamily: 'Antonio' }} >Add New Tool </Typography>
+        <br/>
         <ToolForm
           tool={tool}
           toolImage={toolImage}
@@ -63,6 +88,9 @@ const AddTool = () => {
           handleImageChange={handleImageChange}
           saveTool={saveTool}
         />
+        </Grid>
+      </Container>
+      </ThemeProvider>
       </div>
     );
 };

@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+// import Tools from '../../assets/images/tools.png';
+// import ToolList from '../../components/Tool/ToolList/ToolList';
+import "./home.css"
 
 
 const Home = () => {
@@ -9,6 +12,7 @@ const Home = () => {
         <>
         <div className="homeContainer">
             <Header />
+            {/* <ToolList /> */}
             </div>
             <div className="footerContainer">
                 <Footer />

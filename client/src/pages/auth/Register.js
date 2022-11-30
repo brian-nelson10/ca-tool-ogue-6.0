@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUser, validateEmail } from "../../services/authService";
 import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import Copyright from "./Copyright";
 // import Link from '@mui/material/Link';
@@ -72,6 +72,7 @@ const Register = () => {
                 light: '#ff7961',
                 main: '#f44336',
                 dark: '#ba000d',
+                blue: '#33bfff'
             },
         },
     });
@@ -89,9 +90,18 @@ const Register = () => {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
-                        <HandyMan />
-                    </Avatar>
+                    <IconButton
+                        onClick={(e) => { navigate("/home") }}
+                        sx={{
+                            color: 'white',
+                            bgcolor: 'secondary.blue',
+                            '&:hover': {
+                                color: '#f44336',
+                                bgcolor: 'secondary.blue'
+                            }
+                        }}>
+                        <HandyMan sx={{fontSize: '45px'}}/>
+                    </IconButton>
                     <Typography component="h1" variant="h5">
                         Sign Up
                     </Typography>
@@ -133,7 +143,10 @@ const Register = () => {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2, bgcolor: 'secondary.dark' }}
+                                sx={{ mt: 3, mb: 2, bgcolor: 'secondary.blue', borderRadius: '15px',
+                                '&:hover': {
+                                backgroundColor: '#f44336'
+                            }}}
                             >
                                 Sign Up
                             </Button>
