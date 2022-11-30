@@ -15,8 +15,7 @@ import {
 const initialState = {
     name: "",
     category: "",
-    quantity: "",
-    price: "",
+    quantity: ""
 };
 
 const theme = createTheme({

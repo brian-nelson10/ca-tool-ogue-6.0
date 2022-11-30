@@ -6,9 +6,11 @@ const Token = require("../models/Token");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 
+const secret = 'mysecretsshh';
+
 // Generate Token
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id }, secret, { expiresIn: "1d" });
 };
 
 // Register User
@@ -100,7 +102,7 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 
   if (user && passwordIsCorrect) {
-    const { _id, name, email, photo } = user;
+    const { _id, name, email } = user;
     res.status(200).json({
       _id,
       name,
@@ -119,7 +121,7 @@ const logout = asyncHandler(async (req, res) => {
     path: "/",
     httpOnly: true,
     expires: new Date(0),
-    sameSite: "none",
+    sameSite: "none",   
     secure: true,
   });
   return res.status(200).json({ message: "Successfully Logged Out" });
@@ -149,7 +151,7 @@ const loginStatus = asyncHandler(async (req, res) => {
     return res.json(false);
   }
   // Verify Token
-  const verified = jwt.verify(token, process.env.JWT_SECRET);
+  const verified = jwt.verify(token, secret);
   if (verified) {
     return res.json(true);
   }

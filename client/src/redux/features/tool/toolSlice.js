@@ -27,6 +27,7 @@ const initialState = {
           error.message ||
           error.toString();
         console.log(message);
+        console.log(error);
         return thunkAPI.rejectWithValue(message);
       }
     }

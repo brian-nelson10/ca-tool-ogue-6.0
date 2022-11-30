@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap');
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.table {
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+thead {
+    border-top: 2px solid var(--light-blue);
+    border-bottom: 2px solid var(--light-blue);
+}
+
+th {
+    border: 1px solid #eee;
+}
+
+th,
+td {
+    vertical-align: top;
+    text-align: left;
+    padding: 8px;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icons {
+    margin-right: 7px;
+    cursor: pointer;
+    vertical-align: middle;
+    align-self: center;
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
-
-const API_URL = "/api/tools/";
+// const BACKEND_URL = 'http://localhost:3001';
+// ${BACKEND_URL}
+const API_URL = `/api/tools/`;
 
 // Create New Tool
 const createTool = async (formData) => {

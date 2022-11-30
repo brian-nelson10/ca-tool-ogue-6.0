@@ -57,9 +57,10 @@ const Register = () => {
             const data = await registerUser(userData);
             console.log(data);
             console.log(userData);
+            console.log(data.name);
             await dispatch(SET_LOGIN(true));
             await dispatch(SET_NAME(data.name));
-            navigate("/");
+            navigate("/home");
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
